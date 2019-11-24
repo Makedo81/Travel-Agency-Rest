@@ -4,7 +4,9 @@ import com.rest.travelagency.dao.Booking;
 import com.rest.travelagency.service.email.Mail;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MailCreator {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MailCreator.class);

@@ -16,15 +16,15 @@ public class DealPriceCalculator {
         Long total;
         if (mealPrice == 0) {
             total = (mealPrice * period) + dealPrice;
-            LOGGER.info("Calculated price :" + total + "for period " + period + " days");
+            LOGGER.info("Calculated price :" + total + " euro " +" for period " + period + " days");
         } else {
             total = ((mealPrice * period) + dealPrice);
-            LOGGER.info("Calculated price : " + (mealPrice * period) + dealPrice);
+            LOGGER.info("Calculated price : " + mealPrice + " x " + period + " + " + dealPrice + " = " + total);
             if (total < 0) {
                 LOGGER.error("Price is lower than 0");
                 throw new IllegalStateException("Price is not correct. Check period");
             } else {
-                LOGGER.info("Calculated price :" + total + "for period " + period + " days");
+                LOGGER.info("Calculated price : " + total + " euro" + " for period " + period + " days");
             }
         }
         return new PriceDto(total);

@@ -3,10 +3,13 @@ package com.rest.travelagency.service.booking;
 import com.rest.travelagency.dao.Deal;
 import com.rest.travelagency.domain.booking.SelectedBookingDto;
 import com.rest.travelagency.exceptions.OffertsNotAvailableException;
+import org.springframework.stereotype.Component;
+
 import java.time.LocalDate;
 import java.util.List;
 import java.util.stream.Collectors;
 
+@Component
 public class DealFilter {
 
     public Deal filterDeal(List<Deal> dealList, SelectedBookingDto selectedBookingDto) throws OffertsNotAvailableException {

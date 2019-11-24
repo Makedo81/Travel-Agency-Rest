@@ -32,8 +32,8 @@ public class DealService {
 
         final List<Deal> deals = dealDao.findAllByCountry(country).stream()
                 .filter(d -> d.getOffertsNumber() > 0)
-                .filter(d1 -> d1.getDateFrom().isAfter(dateFrom))
-                .filter(d2 -> d2.getDateTo().isBefore(dateTo))
+                .filter(d1 -> d1.getDateFrom().isAfter(dateFrom)||d1.getDateFrom().isEqual(dateFrom))
+                .filter(d2 -> d2.getDateTo().isBefore(dateTo) || d2.getDateTo().isEqual(dateFrom))
                 .filter(d -> d.getHotel().getCity().getName().equals(city))
                 .collect(Collectors.toList());
         List<DealDto> dealsDtoList = new ArrayList<>();

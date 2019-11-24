@@ -29,7 +29,7 @@ public class MealService {
         Long id = hotels.get(0).getId();
         List<MealPrice> mealsPriceList = mealPriceDao.findByHotelId(id);
         for (MealPrice mealPrice : mealsPriceList) {
-            LOGGER.info(mealPrice.getHotel().getName() + mealPrice.getMealType().getMeal() + mealPrice.getHotel().getId());
+            LOGGER.info("Hotel " + mealPrice.getHotel().getName()+ " ID : " +  mealPrice.getHotel().getId() + " Meal type :  " + mealPrice.getMealType().getMeal() );
         }
         return mealPriceMapper.mapToMealPriceDtoList(mealsPriceList);
     }

@@ -3,8 +3,10 @@ package com.rest.travelagency.service.booking;
 import com.rest.travelagency.dao.User;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
 import java.util.Random;
 
+@Component
 public class CodeGenerator {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(MailCreator.class);

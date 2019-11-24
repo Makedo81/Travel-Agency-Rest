@@ -4,8 +4,11 @@ import com.rest.travelagency.dao.Booking;
 import com.rest.travelagency.domain.booking.FinalPriceDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Component;
+
 import static java.time.temporal.ChronoUnit.DAYS;
 
+@Component
 public class PriceCalculator {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(PriceCalculator.class);
@@ -17,6 +20,7 @@ public class PriceCalculator {
         long period = (DAYS.between(booking.getDeal().getDateFrom(), booking.getDeal().getDateTo())) + 1;
         Long priceTotal = dealPrice + (mealPrice * period);
         calculatedPrice.setFinalPriceDto(priceTotal);
+        LOGGER.info("Final booking price has been calculated");
         return calculatedPrice;
     }
 }

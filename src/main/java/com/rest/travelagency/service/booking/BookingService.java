@@ -6,7 +6,6 @@ import com.rest.travelagency.domain.booking.BookingDto;
 import com.rest.travelagency.domain.booking.FinalPriceDto;
 import com.rest.travelagency.domain.booking.PaymentStatusDto;
 import com.rest.travelagency.domain.booking.SelectedBookingDto;
-import com.rest.travelagency.exceptions.DoublePaymentException;
 import com.rest.travelagency.exceptions.NotMatchingDataException;
 import com.rest.travelagency.exceptions.OffertsNotAvailableException;
 import com.rest.travelagency.mapper.BookingMapper;
@@ -83,7 +82,7 @@ public class BookingService {
         bookingDao.delete(bookings);
     }
 
-    public void pay(final String bookingCode,final String login,final Long cardNumber,final Long cardVcs) throws DoublePaymentException, OffertsNotAvailableException, NotMatchingDataException {
+    public void pay(final String bookingCode,final String login,final Long cardNumber,final Long cardVcs) throws  OffertsNotAvailableException, NotMatchingDataException {
         Booking booking = bookingDao.findByBookingCode(bookingCode);
         User user = userDao.findByLogin(login);
         Payment payment = new Payment();
@@ -96,9 +95,7 @@ public class BookingService {
                 if (offertsCalculator.checkDealNumbers(booking)) {
                     dealDao.save(booking.getDeal());
                 }
-        } else {
-                throw new DoublePaymentException("Payment has been already received");
-            }
+        }
     }
 
     public PaymentStatusDto getPaymentStatus(final String bookingCode) {
